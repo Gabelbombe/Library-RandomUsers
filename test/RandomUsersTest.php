@@ -10,7 +10,7 @@ Class RandomUsersTest Extends PHPUnit_Framework_TestCase
     public function testGetUser()
     {
         $gen = New Generator();
-        $user = $gen->getUsers();
+        $user = $gen->getUser();
         $this->assertTrue(strlen($user->getFirstName()) > 0);
     }
 
