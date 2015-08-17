@@ -32,12 +32,20 @@ Namespace RandomUsers
         // Facade methods
         public function getMale()
         {
-            return array_pop($this->getUsers(1, User::MALE));
+            $user = $this->getUsers(1, User::MALE);
+            return array_pop($user);
         }
 
         public function getFemale()
         {
-            return array_pop($this->getUsers(1, User::FEMALE));
+            $user = $this->getUsers(1, User::FEMALE);
+            return array_pop($user);
+        }
+
+        public function getUser()
+        {
+            $user = $this->getUsers(1);
+            return array_pop($user);
         }
 
         public function getMales($amount)
@@ -75,8 +83,6 @@ Namespace RandomUsers
 
         private function mapUser($response)
         {
-print_r($response);
-die;
             $user = New User();
             $user->setEmail($response->email)
                  ->setGender($response->gender)
@@ -96,7 +102,7 @@ die;
                  ->setDateOfBirth($response->dob)
                  ->setPhone($response->phone)
                  ->setCell($response->cell)
-                 ->setBSN($response->BSN)
+                 ->setNIN($response)
                  ->setPicture($response->picture);
 
             return $user;
